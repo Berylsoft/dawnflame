@@ -319,6 +319,13 @@ impl GlobalContext {
     }
 }
 
+fn make_resp<T: Serialize>(value: &T) -> http::Response<String> {
+    http::Response::builder()
+        .header(http::header::CONTENT_TYPE, "application/json; charset=utf-8")
+        .body(serde_json::to_string(value).unwrap())
+        .unwrap()
+}
+
 impl actor_core::Context for GlobalContext {
     type Req = RawRequest;
     type Res = http::Response<String>;
@@ -329,13 +336,9 @@ impl actor_core::Context for GlobalContext {
         Ok(match self.gateway(req) {
             Ok(req) => {
                 if let Err(resp) = self.verify_auth(&req) {
-                    http::Response::builder()
-                        .body(serde_json::to_string(&resp).unwrap())
-                        .unwrap()
+                    make_resp(&resp)
                 } else {
-                    http::Response::builder()
-                        .body(serde_json::to_string(&req).unwrap())
-                        .unwrap()
+                    make_resp(&req)
                 }
             },
             Err(resp) => resp.map(|_| String::new()),
