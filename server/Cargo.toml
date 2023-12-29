@@ -12,6 +12,7 @@ path = "main.rs"
 
 [dependencies]
 pretty_env_logger = "0.5"
+log = "0.4"
 
 hyper = { version = "1", features = ["http1", "server", "client"] }
 http-body-util = "0.1"
@@ -19,5 +20,6 @@ http-body-util = "0.1"
 # TODO smol io
 tokio = { version = "1", features = ["macros", "net", "signal", "rt", "rt-multi-thread"] }
 hyper-util = { version = "0.1", features = ["tokio"] }
+tokio-actor = { git = "https://github.com/Berylsoft/actor" }
 
 dawnflame = { path = "../core" }

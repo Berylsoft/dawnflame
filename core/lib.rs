@@ -317,10 +317,16 @@ impl GlobalContext {
 
         Ok(())
     }
+}
 
-    pub fn handle(&self, req: RawRequest) -> http::Response<String> {
+impl actor_core::Context for GlobalContext {
+    type Req = RawRequest;
+    type Res = http::Response<String>;
+    type Err = actor_core::ClosedError;
+
+    fn exec(&mut self, req: Self::Req) -> Result<Self::Res, Self::Err> {
         self.record_request(req.id, &req);
-        match self.gateway(req) {
+        Ok(match self.gateway(req) {
             Ok(req) => {
                 if let Err(resp) = self.verify_auth(&req) {
                     http::Response::builder()
@@ -333,6 +339,12 @@ impl GlobalContext {
                 }
             },
             Err(resp) => resp.map(|_| String::new()),
-        }
+        })
+    }
+
+    fn close(self) -> Result<(), Self::Err> {
+        // TODO still need to repair when init
+        log::info!("ctx closed");
+        Ok(())
     }
 }
