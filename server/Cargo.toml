@@ -17,9 +17,11 @@ log = "0.4"
 hyper = { version = "1", features = ["http1", "server", "client"] }
 http-body-util = "0.1"
 
-# TODO smol io
-tokio = { version = "1", features = ["macros", "net", "signal", "rt", "rt-multi-thread"] }
-hyper-util = { version = "0.1", features = ["tokio"] }
-tokio-actor = { git = "https://github.com/Berylsoft/actor" }
+async-global-executor = "2"
+async-net = "2"
+async-channel = "2"
+async-ctrlc = "1"
+smol-hyper = "0.1"
+actor = { git = "https://github.com/Berylsoft/actor" }
 
 dawnflame = { path = "../core" }
