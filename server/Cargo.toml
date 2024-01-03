@@ -17,6 +17,7 @@ log = "0.4"
 hyper = { version = "1", features = ["http1", "server", "client"] }
 http-body-util = "0.1"
 
+futures-lite = "2"
 async-global-executor = "2"
 async-net = "2"
 async-channel = "2"
