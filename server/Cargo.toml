@@ -11,7 +11,7 @@ name = "df"
 path = "main.rs"
 
 [dependencies]
-pretty_env_logger = "0.5"
+env_logger = { version = "0.10", default-features = false }
 log = "0.4"
 
 hyper = { version = "1", features = ["http1", "server", "client"] }
@@ -22,7 +22,8 @@ async-global-executor = "2"
 async-net = "2"
 async-channel = "2"
 async-ctrlc = "1"
-smol-hyper = "0.1"
+# no need for executor and timer now
+smol-hyper = { version = "0.1", default-features = false }
 actor = { git = "https://github.com/Berylsoft/actor" }
 
 dawnflame = { path = "../core" }

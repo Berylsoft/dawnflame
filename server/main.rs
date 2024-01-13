@@ -1,5 +1,5 @@
 async fn _main() {
-    pretty_env_logger::init();
+    env_logger::init();
     // TODO how axum with hyper1 do shutdown
     let (tx, rx) = async_channel::bounded::<()>(1);
 
