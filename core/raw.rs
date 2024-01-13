@@ -74,14 +74,14 @@ impl GlobalContext {
         }
 
         header! { bs
-            service "x-dawnflame-service"
-            method "x-dawnflame-method"
+            service "x-empowerd-service"
+            method "x-empowerd-method"
         }
         
         // TODO and other non-login services
         let auch = if !(service == "System.Register") {
-            header! { s uid "x-dawnflame-uid"}
-            header! { b _signature "x-dawnflame-signature" }
+            header! { s uid "x-empowerd-uid"}
+            header! { b _signature "x-empowerd-signature" }
 
             let uid: Uid = else_reject!(Ok(uid.parse()));
             const BASE64_SIGNATURE_LENGTH: usize = 66; // data_encoding::BASE64.encode_len(SIGNATURE_LENGTH);

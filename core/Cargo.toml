@@ -1,10 +1,10 @@
 [package]
-name = "dawnflame"
+name = "empowerd"
 version = "0.1.0"
 edition = "2021"
 authors = ["stackinspector"]
 license = "MPL-2.0"
-repository = "https://github.com/Berylsoft/dawnflame"
+repository = "https://github.com/Berylsoft/empowerd"
 
 [lib]
 path = "lib.rs"

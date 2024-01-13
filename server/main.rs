@@ -4,7 +4,7 @@ async fn _main() {
     let (tx, rx) = async_channel::bounded::<()>(1);
 
     async_global_executor::spawn(async move {
-        let ctx = actor::spawn(dawnflame::GlobalContext::init(dawnflame::GlobalConfig {
+        let ctx = actor::spawn(empowerd::GlobalContext::init(empowerd::GlobalConfig {
             root: &std::path::PathBuf::from(&"C:/swap/dftest"),
             db_mem_max: None,
             api_path: None,
@@ -31,7 +31,7 @@ async fn _main() {
                         let local_ref = local_ref.clone();
                         async move {
                             let (header, payload) = req.into_parts();
-                            Ok::<_, core::convert::Infallible>(local_ref.request(dawnflame::IncomingRequest {
+                            Ok::<_, core::convert::Infallible>(local_ref.request(empowerd::IncomingRequest {
                                 time: std::time::SystemTime::now(),
                                 remote_addr,
                                 header,

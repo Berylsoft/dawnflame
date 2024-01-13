@@ -105,7 +105,7 @@ impl Code {
 impl GlobalContext {
     pub fn init(GlobalConfig { root, db_mem_max, api_path }: GlobalConfig) -> Self {
         let db_mem_max = db_mem_max.unwrap_or(256 * 2usize.pow(20) /* 256MiB */);
-        let api_path = api_path.unwrap_or("/__dawnflame_api");
+        let api_path = api_path.unwrap_or("/__empowerd_api");
 
         let db = Self::db_init(root.join("main-db"), db_mem_max);
 

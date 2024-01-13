@@ -1,13 +1,13 @@
 [package]
-name = "dawnflame-server"
+name = "empowerd-server"
 version = "0.1.0"
 edition = "2021"
 authors = ["stackinspector"]
 license = "MPL-2.0"
-repository = "https://github.com/Berylsoft/dawnflame"
+repository = "https://github.com/Berylsoft/empowerd"
 
 [[bin]]
-name = "df"
+name = "empowerd"
 path = "main.rs"
 
 [dependencies]
@@ -26,4 +26,4 @@ async-ctrlc = "1"
 smol-hyper = { version = "0.1", default-features = false }
 actor = { git = "https://github.com/Berylsoft/actor" }
 
-dawnflame = { path = "../core" }
+empowerd = { path = "../core" }
